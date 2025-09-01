@@ -4,7 +4,7 @@ import pandas as pd
 # ----------------------------
 # 1️⃣ 讀取價格資料 (Excel 多工作表)
 # ----------------------------
-price_file = "https://raw.githubusercontent.com/vivian1174/ng_price/main/天然氣價格數據.xlsx"
+price_file = "https://raw.githubusercontent.com/vivian1174/ng_price/main/ngpricedata.xlsx"
 
 # 讀取工作表 '0_Prices'，header 在第 3 列 (index=3)
 df_price = pd.read_excel(price_file, sheet_name="0_Prices", header=3)
@@ -38,7 +38,7 @@ df_price_selected.set_index("Date", inplace=True)
 # ----------------------------
 # 2️⃣ 讀取庫存資料 (ngihistory.xls)
 # ----------------------------
-storage_file = r"https://raw.githubusercontent.com/vivian1174/ng_price/main/儲氣庫存數據.xlsx"
+storage_file = r"https://raw.githubusercontent.com/vivian1174/ng_price/main/ngstoragedata.xls"
 
 # 讀取 HTML report history，header 第 0 列
 df_storage = pd.read_excel(storage_file, sheet_name="html_report_history", header=0)
