@@ -64,6 +64,7 @@ chart_price = (
         color="Region:N"
     )
     .properties(width=800, height=400)
+    .interactive()
 )
 
 st.altair_chart(chart_price, use_container_width=True)
@@ -78,6 +79,7 @@ chart_storage = (
         y=alt.Y("Storage:Q", title="庫存量 (Bcf)")
     )
     .properties(width=800, height=400)
+    .interactive()
 )
 
 st.altair_chart(chart_storage, use_container_width=True)
