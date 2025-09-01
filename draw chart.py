@@ -10,15 +10,7 @@ price_file = "https://raw.githubusercontent.com/vivian1174/ng_price/main/ngprice
 df_price = pd.read_excel(price_file, sheet_name="0_Prices", header=3)
 
 # 選取需要的欄位
-df_price_selected = df_price[[
-    "D",  # 日期
-    "E",  # Texas Gas zone 1
-    "H",  # Columbia Gulf Mainline
-    "K",  # Henry Hub現貨
-    "M",  # Henry Hub期貨
-    "Q",  # JKM
-    "U"   # TTF
-]]
+df_price_selected = df_price.iloc[:, [3, 4, 7, 10, 12, 16, 20]]
 
 # 重命名欄位
 df_price_selected.columns = [
