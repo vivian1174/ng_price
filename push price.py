@@ -7,8 +7,8 @@ import shutil
 price_source_excel = r"\\Tpfpccpre20175\礦權管理\3_經析-市場行情\data_每日天然氣市場報告_天然氣價格資料_v20250901.xlsx"
 storage_source_excel = r"C:\Users\N000189549\natural gas price bot\ngshistory.xls"
 # GitHub repo 內 Excel 檔路徑
-price_repo_excel = r"C:\Users\N000189549\natural gas price bot\Github\ng_price\天然氣價格數據.xlsx"
-storage_repo_excel = r"C:\Users\N000189549\natural gas price bot\Github\ng_price\儲氣庫存數據.xls"
+price_repo_excel = r"C:\Users\N000189549\natural gas price bot\Github\ng_price\ngpricedata.xlsx"
+storage_repo_excel = r"C:\Users\N000189549\natural gas price bot\Github\ng_price\ngstoragedata.xls"
 repo_path = r"C:\Users\N000189549\natural gas price bot\Github\ng_price"
 
 # 複製 Excel 到 repo
