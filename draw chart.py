@@ -37,10 +37,11 @@ st.subheader("價格折線圖 (USD/MMBtu)")
 df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", value_name="Price")
 
 # 建立 hover 選擇器
-hover = alt.selection_point(
-    fields=["Date"], on="mouseover", empty="none"
+hover = alt.selection_single(
+    fields=["Date"], on="mouseover", nearest=True, empty="none"
 )
 
+# 折線圖 (永遠顯示)
 line = (
     alt.Chart(df_price_melted)
     .mark_line()
@@ -51,7 +52,7 @@ line = (
     )
 )
 
-# 資料點（hover 顯示每日數值）
+# hover 點 (只在滑鼠移上去時顯示)
 points = (
     alt.Chart(df_price_melted)
     .mark_point(size=60)
@@ -64,7 +65,8 @@ points = (
     .transform_filter(hover)
 )
 
-chart_price = (line + points).properties(width=800, height=400).interactive()
+# 綁定 hover
+chart_price = (line + points).add_selection(hover).properties(width=800, height=400).interactive()
 st.altair_chart(chart_price, use_container_width=True)
 # 柱狀圖：庫存量 (Altair)
 st.subheader("庫存量柱狀圖 (Bcf)")
