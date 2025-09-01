@@ -7,7 +7,7 @@ import pandas as pd
 price_file = "https://raw.githubusercontent.com/vivian1174/ng_price/main/ngpricedata.xlsx"
 
 # 讀取工作表 '0_Prices'，header 在第 3 列 (index=3)
-df_price = pd.read_excel(price_file, sheet_name="0_Prices", header=4)
+df_price = pd.read_excel(price_file, sheet_name="0_Prices", header=3)
 
 # 選取需要的欄位
 df_price_selected = df_price.iloc[:, [3, 4, 7, 10, 12, 16, 20]]
