@@ -30,7 +30,7 @@ df_price_selected.set_index("Date", inplace=True)
 # ----------------------------
 # 2️⃣ 讀取庫存資料 (ngihistory.xls)
 # ----------------------------
-storage_file = r"https://raw.githubusercontent.com/vivian1174/ng_price/main/ngstoragedata.xls"
+storage_file = r"https://raw.githubusercontent.com/vivian1174/ng_price/main/ngstoragedata.xlsx"
 
 # 讀取 HTML report history，header 第 0 列
 df_storage = pd.read_excel(storage_file, sheet_name="html_report_history", header=0)
