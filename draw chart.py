@@ -38,7 +38,7 @@ df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", valu
 
 # 建立 hover 選擇器
 hover = alt.selection_point(
-    fields=["Date", "Region"], nearest=True, on="mouseover", empty="none"
+    fields=["Date"], on="mouseover", empty="none"
 )
 
 line = (
@@ -51,16 +51,21 @@ line = (
     )
 )
 
+# 資料點（hover 顯示每日數值）
 points = (
-    line.mark_point(size=60)
-    .encode(tooltip=["Date:T", "Region:N", "Price:Q"])
-    .add_params(hover)
+    alt.Chart(df_price_melted)
+    .mark_point(size=60)
+    .encode(
+        x="Date:T",
+        y="Price:Q",
+        color="Region:N",
+        tooltip=["Date:T", "Region:N", "Price:Q"]
+    )
     .transform_filter(hover)
 )
 
 chart_price = (line + points).properties(width=800, height=400).interactive()
 st.altair_chart(chart_price, use_container_width=True)
-
 # 柱狀圖：庫存量 (Altair)
 st.subheader("庫存量柱狀圖 (Bcf)")
 chart_storage = (
