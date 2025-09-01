@@ -56,14 +56,13 @@ line = (
 # hover 點 (只在滑鼠移上去時顯示)
 points = (
     alt.Chart(df_price_melted)
-    .mark_point(size=60)
+    .mark_circle(size=40, opacity=0)  # 隱藏點
     .encode(
         x="Date:T",
         y="Price:Q",
         color="Region:N",
         tooltip=["Date:T", "Region:N", "Price:Q"]
     )
-    .transform_filter(hover)
 )
 
 # 綁定 hover
