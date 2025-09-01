@@ -41,7 +41,8 @@ df_storage_selected.columns = ["Date", "Storage"]
 
 # 日期轉 datetime 並設為 index
 df_storage_selected["Date"] = pd.to_datetime(df_storage_selected["Date"]) 
-df_storage_selected.set_index("Date", inplace=True) df_price_selected = df_price_selected.apply(pd.to_numeric, errors="coerce") 
+df_storage_selected.set_index("Date", inplace=True)
+df_price_selected = df_price_selected.apply(pd.to_numeric, errors="coerce") 
 df_price_selected = df_price_selected.dropna(subset=["Date"])
 # ----------------------------
 # 3️⃣ Streamlit 繪圖
