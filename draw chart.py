@@ -48,7 +48,7 @@ line = (
     .encode(
         x=alt.X("Date:T", title="月份 (YYYY-MM)", axis=alt.Axis(format="%Y-%m")),
         y=alt.Y("Price:Q", title="價格 (USD/MMBtu)"),
-        color="Region:N"
+        color=alt.Color("Region:N", legend=alt.Legend(orient="bottom"))
     )
 )
 
