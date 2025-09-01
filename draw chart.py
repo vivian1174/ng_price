@@ -24,7 +24,7 @@ df_price_selected.columns = [
 ]
 
 # 日期轉 datetime 並設為 index
-df_price_selected["Date"] = pd.to_datetime(df_price_selected["Date"])
+df_price_selected["Date"] = pd.to_datetime(df_price_selected["Date"], errors="coerce")
 df_price_selected = df_price_selected.dropna(subset=["Date"])
 df_price_selected.set_index("Date", inplace=True)
 
