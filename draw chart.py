@@ -24,7 +24,7 @@ df_price_selected.columns = [
     "TTF"
 ]
 
-# 日期轉 datetime 並設為 index
+# 日期轉 datetime
 df_price_selected["Date"] = pd.to_datetime(df_price_selected["Date"], errors="coerce")
 df_price_selected = df_price_selected.dropna(subset=["Date"])
 price_cols = ["TexasGas","ColumbiaGulf","HH_Spot","HH_Futures","JKM","TTF"]
@@ -59,7 +59,7 @@ chart_price = (
     alt.Chart(df_price_melted)
     .mark_line()
     .encode(
-        x=alt.X("yearmonth(Date):T", title="月份 (YYYY-MM)", axis=alt.Axis(format="%Y-%m")),
+        x=alt.X("Date:T", title="月份 (YYYY-MM)", axis=alt.Axis(format="%Y-%m")),
         y=alt.Y("Price:Q", title="價格 (USD/MMBtu)"),
         color="Region:N"
     )
@@ -74,7 +74,7 @@ chart_storage = (
     alt.Chart(df_storage_selected)
     .mark_bar()
     .encode(
-        x=alt.X("yearmonth(Date):T", title="月份 (YYYY-MM)", axis=alt.Axis(format="%Y-%m")),
+        x=alt.X("Date:T", title="月份 (YYYY-MM)", axis=alt.Axis(format="%Y-%m")),
         y=alt.Y("Storage:Q", title="庫存量 (Bcf)")
     )
     .properties(width=800, height=400)
