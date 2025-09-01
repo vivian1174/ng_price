@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+st.cache_data.clear()
 
 # ----------------------------
 # 1️⃣ 讀取價格資料 (Excel 多工作表)
