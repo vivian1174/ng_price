@@ -100,12 +100,7 @@ rule = (
 )
 
 # 合併圖層
-chart_price = (
-    alt.layer(line, selectors, points, rule)
-    .resolve_tooltip(independent=True)  # 👈 關鍵
-    .properties(width=800, height=400)
-    .interactive()
-)
+chart_price = (line + selectors + points + rule).properties(width=800, height=400).interactive()
 
 st.altair_chart(chart_price, use_container_width=True)
 # 柱狀圖：庫存量 (Altair)
