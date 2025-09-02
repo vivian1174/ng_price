@@ -37,7 +37,6 @@ st.title("天然氣價格與庫存 Dashboard")
 st.subheader("價格折線圖 (USD/MMBtu)")
 df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", value_name="Price")
 
-# 建立 hover 選擇器
 # 建立 hover 選擇器 (nearest)
 hover = alt.selection_single(
     fields=["Date"],
@@ -58,7 +57,15 @@ line = (
     )
 )
 
-# 點 (hover 時顯示所有 Region 的資料)
+# 透明的點（用來接收 hover）
+selectors = (
+    alt.Chart(df_price_melted)
+    .mark_point(opacity=0)
+    .encode(x="Date:T", y="Price:Q")
+    .add_selection(hover)
+)
+
+# 顯示點 (hover 時才出現)
 points = (
     alt.Chart(df_price_melted)
     .mark_circle(size=65)
@@ -79,8 +86,8 @@ rule = (
     .transform_filter(hover)
 )
 
-# 綁定 hover
-chart_price = (line + points + rule).add_selection(hover).properties(width=800, height=400).interactive()
+# 合併圖層
+chart_price = (line + selectors + points + rule).properties(width=800, height=400).interactive()
 st.altair_chart(chart_price, use_container_width=True)
 # 柱狀圖：庫存量 (Altair)
 st.subheader("庫存量柱狀圖 (Bcf)")
