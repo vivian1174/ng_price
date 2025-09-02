@@ -37,7 +37,11 @@ st.title("天然氣價格與庫存 Dashboard")
 st.subheader("價格折線圖 (USD/MMBtu)")
 df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", value_name="Price")
 
-# 建立 hover 選擇器 (nearest)
+# 折線圖：各地區價格 (Altair)
+st.subheader("價格折線圖 (USD/MMBtu)")
+df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", value_name="Price")
+
+# 建立 hover 選擇器（最近日期）
 hover = alt.selection_single(
     fields=["Date"],
     nearest=True,
@@ -57,18 +61,18 @@ line = (
     )
 )
 
-# 透明的點（用來接收 hover）
+# 選擇器層（透明點，讓整個 x 軸可被 hover）
 selectors = (
     alt.Chart(df_price_melted)
     .mark_point(opacity=0)
-    .encode(x="Date:T", y="Price:Q")
+    .encode(x="Date:T", tooltip=["Date:T"])
     .add_selection(hover)
 )
 
-# 顯示點 (hover 時才出現)
+# hover 顯示的點
 points = (
     alt.Chart(df_price_melted)
-    .mark_circle(size=65)
+    .mark_point(size=60)
     .encode(
         x="Date:T",
         y="Price:Q",
@@ -78,10 +82,10 @@ points = (
     .transform_filter(hover)
 )
 
-# 垂直線
+# 垂直輔助線
 rule = (
     alt.Chart(df_price_melted)
-    .mark_rule(color="gray")
+    .mark_rule(color="Lavender")
     .encode(x="Date:T")
     .transform_filter(hover)
 )
