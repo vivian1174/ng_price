@@ -73,7 +73,6 @@ points = (
         x="Date:T",
         y="Price:Q",
         color="Region:N",
-        tooltip=["Date:T", "Region:N", "Price:Q"]
     )
     .transform_filter(hover)
 )
