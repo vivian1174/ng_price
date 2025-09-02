@@ -80,6 +80,11 @@ points = (
 # 垂直輔助線
 rule = (
     alt.Chart(df_price_melted)
+    .transform_pivot(
+        "Region",        # 把 Region 欄位展開成多欄
+        value="Price",
+        groupby=["Date"]
+    )
     .mark_rule(color="Lavender")
     .encode(
         x="Date:T",
@@ -90,11 +95,6 @@ rule = (
             alt.Tooltip("JKM:Q", title="JKM"),
             alt.Tooltip("TTF:Q", title="TTF"),
         ]
-    )
-    .transform_pivot(
-        "Region",  # 把 Region 欄位展開成多欄
-        value="Price",
-        groupby=["Date"]
     )
     .transform_filter(hover)
 )
