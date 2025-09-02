@@ -119,7 +119,7 @@ chart_storage = (
 st.altair_chart(chart_storage, use_container_width=True)
 #插入溫度地圖
 st.subheader("美國氣溫分布圖 (°C)")
-img_url = "https://raw.githubusercontent.com/vivian1174/ng_price/main/climate.pdf"
+img_url = "https://raw.githubusercontent.com/vivian1174/ng_price/main/day.max_min.gif"
 st.image(img_url,caption="天氣概況", use_container_width=True)
 # ----------------------------
 # 4️⃣ 可選：顯示原始數據
