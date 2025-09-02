@@ -37,10 +37,6 @@ st.title("天然氣價格與庫存 Dashboard")
 st.subheader("價格折線圖 (USD/MMBtu)")
 df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", value_name="Price")
 
-# 折線圖：各地區價格 (Altair)
-st.subheader("價格折線圖 (USD/MMBtu)")
-df_price_melted = df_price_selected.melt(id_vars="Date", var_name="Region", value_name="Price")
-
 # 建立 hover 選擇器（最近日期）
 hover = alt.selection_single(
     fields=["Date"],
