@@ -86,7 +86,13 @@ points = (
 rule = (
     alt.Chart(df_price_melted)
     .mark_rule(color="Lavender")
-    .encode(x="Date:T")
+    .encode(x="Date:T",tooltip=[
+            alt.Tooltip("Date:T", title="日期"),
+            alt.Tooltip("HH_Spot:Q", title="HH Spot"),
+            alt.Tooltip("HH_Futures:Q", title="HH Futures"),
+            alt.Tooltip("JKM:Q", title="JKM"),
+            alt.Tooltip("TTF:Q", title="TTF"),
+        ])
     .transform_filter(hover)
 )
 
