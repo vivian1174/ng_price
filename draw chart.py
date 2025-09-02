@@ -61,7 +61,7 @@ line = (
 selectors = (
     alt.Chart(df_price_melted)
     .mark_point(opacity=0)
-    .encode(x="Date:T", tooltip=["Date:T"])
+    .encode(x="Date:T")
     .add_selection(hover)
 )
 
