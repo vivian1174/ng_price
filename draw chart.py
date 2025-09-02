@@ -121,8 +121,8 @@ st.altair_chart(chart_storage, use_container_width=True)
 # ----------------------------
 # 4️⃣ 可選：顯示原始數據
 # ----------------------------
-if st.checkbox("顯示原始價格資料"):
-    st.dataframe(df_price_selected)
+#if st.checkbox("顯示原始價格資料"):
+#    st.dataframe(df_price_selected)
 
-if st.checkbox("顯示原始庫存資料"):
-    st.dataframe(df_storage_selected)
+#if st.checkbox("顯示原始庫存資料"):
+#    st.dataframe(df_storage_selected)
