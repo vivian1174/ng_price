@@ -21,7 +21,7 @@ df_price_selected[price_cols] = df_price_selected[price_cols].apply(pd.to_numeri
 # ----------------------------
 # 2️⃣ 讀取庫存資料
 # ----------------------------
-storage_file = r"https://raw.githubusercontent.com/vivian1174/ng_price/main/ngstoragedata.xlsx"
+storage_file = r"https://raw.githubusercontent.com/vivian1174/ng_price/main/ngstoragedata.xls"
 df_storage = pd.read_excel(storage_file, sheet_name="html_report_history", header=8)
 df_storage_selected = df_storage.iloc[:, [0, 9]]
 df_storage_selected.columns = ["Date", "Storage"]
